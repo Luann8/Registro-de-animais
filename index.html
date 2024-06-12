@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Registro de Animais</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        transition: background-color 0.3s, color 0.3s;
+    }
+    
+    .container-fluid {
+        padding: 20px;
+    }
+    
+    .card {
+        margin-bottom: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+    }
+    
+    .card-header {
+        background-color: #44141c;
+        color: #fff;
+        font-size: 1.25rem;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+    
+    .btn-primary {
+        background-color: #44141c;
+        border-color: #44141c;
+    }
+    
+    .btn-primary:hover {
+        background-color: #44141c;
+        border-color: #44141c;
+    }
+    
+    .btn-secondary {
+        background-color: #6c757d;
+        border-color: #6c757d;
+    }
+    
+    .btn-secondary:hover {
+        background-color: #5a6268;
+        border-color: #545b62;
+    }
+    
+    .highlight-card {
+        background-color: #fff3cd;
+        padding: 15px;
+        border: 1px solid #ffeeba;
+        border-radius: 10px;
+    }
+    
+    .highlight-card label {
+        font-weight: bold;
+        color: #856404;
+    }
+    
+    .info-card {
+        margin-bottom: 20px;
+    }
+    
+    .form-control {
+        border-radius: 5px;
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+    
+    .form-group label {
+        font-weight: 600;
+    }
+    
+    h1 {
+        color: #333;
+        margin-bottom: 20px;
+        font-size: 2.5rem;
+    }
+    
+    .dark-mode {
+        background-color: #343a40;
+        color: #f8f9fa;
+    }
+    
+    .dark-mode h1 {
+        color: #f8f9fa;
+    }
+
+    .dark-mode .card {
+        background-color: #495057;
+        color: #f8f9fa;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+    
+    .dark-mode .card-header {
+        background-color: #6c757d;
+        color: #f8f9fa;
+    }
+    
+    .dark-mode .highlight-card {
+        background-color: #6c757d;
+        border-color: #5a6268;
+    }
+    
+    .dark-mode .highlight-card label {
+        color: #f8f9fa;
+    }
+    
+    .dark-mode .form-control {
+        background-color: #6c757d;
+        color: #f8f9fa;
+        border-color: #5a6268;
+        box-shadow: none;
+    }
+    
+    .dark-mode .btn-primary {
+        background-color: #44141c;
+        border-color: #44141c;
+    }
+    
+    .dark-mode .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+    }
+    
+    .dark-mode .btn-secondary {
+        background-color: #adb5bd;
+        border-color: #adb5bd;
+    }
+    
+    .dark-mode .btn-secondary:hover {
+        background-color: #6c757d;
+        border-color: #6c757d;
+    }
+    
+</style>
+<body class="light-mode">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-center mb-4">Registro de Animais</h1>
+            </div>
+        </div>
+<div class="row">
+    <div class="col-md-12 text-right mb-4">
+        <button id="toggle-mode" class="btn btn-secondary">💡</button>
+    </div>
+</div>
+        <div class="row">
+            <!-- Cards grandes -->
+            <div class="col-md-3">
+                <div class="card highlight-card">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="animal-id">ID do Animal</label>
+                            <input type="text" class="form-control" id="animal-id" name="animal-id" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card highlight-card">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="brinco-id">ID Brinco Eletrônico</label>
+                            <input type="text" class="form-control" id="brinco-id" name="brinco-id" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card highlight-card">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="lote">Lote</label>
+                            <input type="text" class="form-control" id="lote" name="lote" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card highlight-card">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="manejo">Manejo (SISBOV)</label>
+                            <input type="text" class="form-control" id="manejo" name="manejo" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Outras informações -->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card info-card">
+                    <div class="card-header">Informações Básicas</div>
+                    <div class="card-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="nascimento">Mês e Ano de Nascimento</label>
+                                <input type="month" class="form-control" id="nascimento" name="nascimento" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="idade">Idade em Meses</label>
+                                <input type="number" class="form-control" id="idade" name="idade" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="raca">Raça</label>
+                                <input type="text" class="form-control" id="raca" name="raca" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="sexo">Sexo</label>
+                                <select class="form-control" id="sexo" name="sexo" required>
+                                    <option value="Macho">Macho</option>
+                                    <option value="Fêmea">Fêmea</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="categoria">Categoria</label>
+                                <input type="text" class="form-control" id="categoria" name="categoria" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="cria">Cria ao Pé</label>
+                                <input type="text" class="form-control" id="cria" name="cria">
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="mae">Mãe</label>
+                                        <input type="text" class="form-control" id="mae" name="mae" required>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="pai">Pai</label>
+                                        <input type="text" class="form-control" id="pai" name="pai" required>
+                                    </div>
+                                </div>
+                            </div>
+            </div>
+        </div>
+    </div>
+            <!-- Peso e Medicamentos -->
+            <div class="col-md-6">
+                <div class="card info-card">
+                    <div class="card-header">Informações de Peso e Medicamentos</div>
+                    <div class="card-body">
+                        <form>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="peso-anterior">Peso Anterior</label>
+                                    <input type="number" class="form-control" id="peso-anterior" name="peso-anterior" step="0.01" required>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="peso-anterior-data">Data Peso Anterior</label>
+                                    <input type="date" class="form-control" id="peso-anterior-data" name="peso-anterior-data" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="dias-ate-hoje">Dias até Hoje</label>
+                                    <input type="number" class="form-control" id="dias-ate-hoje" name="dias-ate-hoje" readonly>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="quantidade-animais">Quantidade de Animais</label>
+                                    <input type="number" class="form-control" id="quantidade-animais" name="quantidade-animais" readonly>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="peso-medio">Peso Médio</label>
+                                    <input type="number" class="form-control" id="peso-medio" name="peso-medio" readonly>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="gmd">Ganho Médio Diário (GMD)</label>
+                                    <input type="number" class="form-control" id="gmd" name="gmd" readonly>
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <label for="medicamentos">Medicamentos</label>
+                                    <textarea class="form-control" id="medicamentos" name="medicamentos" rows="3"></textarea>
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <label for="obs">Observações</label>
+                                    <textarea class="form-control" id="obs" name="obs" rows="3"></textarea>
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <button type="button" class="btn btn-primary" onclick="calcularGmd()">Salvar Registro</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script>
+            document.getElementById('toggle-mode').addEventListener('click', function () {
+                document.body.classList.toggle('dark-mode');
+            });
+    
+            function calcularGmd() {
+                const pesoAnterior = parseFloat(document.getElementById('peso-anterior').value);
+                const pesoAtual = parseFloat(document.getElementById('peso-atual').value);
+                const pesoAnteriorData = new Date(document.getElementById('peso-anterior-data').value);
+                const hoje = new Date();
+                const diasAteHoje = Math.floor((hoje - pesoAnteriorData) / (1000 * 60 * 60 * 24));
+                
+                if (!isNaN(diasAteHoje)) {
+                    document.getElementById('dias-ate-hoje').value = diasAteHoje;
+                }
+    
+                if (!isNaN(pesoAnterior) && !isNaN(pesoAtual) && diasAteHoje > 0) {
+                    const gmd = (pesoAtual - pesoAnterior) / diasAteHoje;
+                    document.getElementById('gmd').value = gmd.toFixed(2);
+                }
+            }
+        </script>
+    </body>
+    </html>
