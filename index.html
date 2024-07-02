@@ -161,6 +161,7 @@
                         <div class="form-group">
                             <label for="animal-id">ID do Animal</label>
                             <input type="text" class="form-control" id="animal-id" name="animal-id" required>
+                            <button id="read-chip" class="btn btn-primary mt-2">Ler Chip</button>
                         </div>
                     </div>
                 </div>
@@ -321,6 +322,23 @@
                     document.getElementById('gmd').value = gmd.toFixed(2);
                 }
             }
+
+            document.getElementById('read-chip').addEventListener('click', async function () {
+                try {
+                    const device = await navigator.bluetooth.requestDevice({
+                        filters: [{ services: ['battery_service'] }]
+                    });
+                    const server = await device.gatt.connect();
+                    const service = await server.getPrimaryService('battery_service');
+                    const characteristic = await service.getCharacteristic('battery_level');
+                    const value = await characteristic.readValue();
+                    const chipId = value.getUint8(0);
+                    document.getElementById('animal-id').value = chipId;
+                } catch (error) {
+                    console.error(error);
+                    alert('Falha ao ler o chip do animal.');
+                }
+            });
         </script>
     </body>
     </html>
