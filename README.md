@@ -17,9 +17,10 @@ pip install -r requirements.txt
 # Configurar e executar o projeto Django
 python manage.py migrate
 python manage.py runserver
-```
 
+```
 # Instalar virtualenv se necessário
+```bash
 pip install virtualenv
 
 # Criar e ativar ambiente virtual
@@ -33,3 +34,4 @@ pip install -r requirements.txt
 # Configurar e executar o projeto Django
 python manage.py migrate
 python manage.py runserver
+
