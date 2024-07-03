@@ -17,9 +17,11 @@ pip install django
 # Instalar Django REST framework
 pip install djangorestframework
 
+```
+
 ### Windows
 
-```cmd
+```bash
 # Criar ambiente virtual
 python -m venv venv
 
