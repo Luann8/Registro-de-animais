@@ -5,7 +5,7 @@
 ### Linux/macOS
 
 ```bash
-# Criar ambiente virtual (substitua `venv` pelo nome desejado)
+# Criar ambiente virtual
 python -m venv venv
 
 # Ativar ambiente virtual
