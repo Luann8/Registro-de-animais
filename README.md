@@ -1,37 +1,19 @@
-### Criar Ambiente Virtual e Instalar Bibliotecas
+# Configuração do Ambiente Virtual e Instalação de Bibliotecas Django
 
-#### Linux/macOS:
+## Criar e Ativar Ambiente Virtual
+
+### Linux/macOS
 
 ```bash
-# Instalar virtualenv se necessário
-pip install virtualenv
+# Criar ambiente virtual (substitua `venv` pelo nome desejado)
+python -m venv venv
 
-# Criar e ativar ambiente virtual
-cd caminho/para/seu/projeto
-virtualenv .venv
-source .venv/bin/activate
+# Ativar ambiente virtual
+source venv/bin/activate
 
-# Instalar dependências do projeto
-pip install -r requirements.txt
+# Instalar Django
+pip install django
 
-# Configurar e executar o projeto Django
-python manage.py migrate
-python manage.py runserver
-
-```
-# Instalar virtualenv se necessário
-```bash
-pip install virtualenv
-
-# Criar e ativar ambiente virtual
-cd caminho\para\seu\projeto
-virtualenv .venv
-.venv\Scripts\activate
-
-# Instalar dependências do projeto
-pip install -r requirements.txt
-
-# Configurar e executar o projeto Django
-python manage.py migrate
-python manage.py runserver
+# Instalar Django REST framework
+pip install djangorestframework
 
